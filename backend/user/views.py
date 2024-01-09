@@ -1,7 +1,17 @@
 from rest_framework import permissions, response, status, generics
 from rest_framework_simplejwt import tokens
 
+from .models import User 
 from .serializers import UserRegisterationSerializer, UserProfileSerializer
+
+
+####################### Authentication section #######################
+
+
+class UserLoginAPIView(generics.GenericAPIView):
+    """
+    An endpoint to login users.
+    """
 
 
 class UserLogoutAPIView(generics.GenericAPIView):
@@ -10,6 +20,9 @@ class UserLogoutAPIView(generics.GenericAPIView):
     """
 
     permission_classes = (permissions.IsAuthenticated,)
+    
+    def get(self, request, *args, **kwargs):
+        pass
 
     def post(self, request, *args, **kwargs):
         try:
@@ -30,6 +43,9 @@ class UserRegisterAPIView(generics.CreateAPIView):
     
     # permission_classes = []
     
+    def get(self, request, *args, **kwargs):
+        pass
+    
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -48,6 +64,12 @@ class UsreProfileAPIView(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = [UserProfileSerializer]
     
+    def get(self, request, *args, **kwargs):
+        pass
+    
+    def put(self, request, *args, **kwargs):
+        pass
+    
     def post(self, request, *args, **kwargs):
         try:
             serializer = self.get_serializer(data=request.data)
@@ -56,3 +78,30 @@ class UsreProfileAPIView(generics.RetrieveAPIView):
             return response.Response(data=data, status=status.HTTP_200_OK)
         except Exception as e:
             return response.Response(status=status.HTTP_404_NOT_FOUND)
+
+
+####################### Reset password section #######################
+
+
+class GetUserMobileAPIView(generics.GenericAPIView):
+    """
+    An endpoint for users to send their mobile accounts
+    """
+    
+    def post(self, request, *args, **kwargs):
+        pass
+    
+    def get(self, request, *args, **kwargs):
+        pass
+
+
+class SendOTPAPIView(generics.GenericAPIView):
+    """
+    An endpoint for users to the OTP tokens
+    """
+
+
+class ResetPasswordAPIView(generics.GenericAPIView):
+    """
+    An endpoint for users to reset their passwords
+    """

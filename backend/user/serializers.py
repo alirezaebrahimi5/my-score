@@ -13,7 +13,7 @@ class UserRegisterationSerializer(serializers.ModelSerializer):
         }
     
     def create(self, **validated_data):
-        return super().create(validated_data)
+        return User.objects.create_user(**validated_data)
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
