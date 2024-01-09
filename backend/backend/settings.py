@@ -160,7 +160,7 @@ DATABASES = {
         'PORT': '2345',
     },
     # for recieving data locations from platform
-    'location': {
+    'locations': {
         'ENGINE': 'djongo',
         'NAME': 'location_db',
         'USER': 'dj_mongo',
