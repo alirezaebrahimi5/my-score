@@ -1,6 +1,10 @@
 from rest_framework import serializers
 
+<<<<<<< HEAD
 from .models import UserLocation, NewLocation
+=======
+from .models import UserLocation
+>>>>>>> f64a207 (adding some of location functionality)
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -11,6 +15,7 @@ class LocationSerializer(serializers.ModelSerializer):
         
         def create(self, validated_data):
             return UserLocation.objects.using("locations").create(**validated_data)
+<<<<<<< HEAD
 
 
 class NewLocationSerializer(serializers.ModelSerializer):
@@ -21,3 +26,5 @@ class NewLocationSerializer(serializers.ModelSerializer):
         
         def create(self, validated_data):
             return NewLocation.objects.create(**validated_data)
+=======
+>>>>>>> f64a207 (adding some of location functionality)
