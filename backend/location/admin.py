@@ -6,3 +6,4 @@ from .models import UserLocation
 @admin.register(UserLocation)
 class ULAdmin(admin.ModelAdmin):
     list_display = ['user', 'where_is']
+    search_fields = ['user']

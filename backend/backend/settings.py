@@ -159,7 +159,7 @@ DATABASES = {
         'PASSWORD': 'my passwords always are best, dont doubt ;)',
         'PORT': '2345',
     },
-    # for recieving data locations from platform
+    # TODO: use Mongodb to store data, that comes from GEOLocation via API call
     'locations': {
         'ENGINE': 'djongo',
         'NAME': 'location_db',
