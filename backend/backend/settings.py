@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'corsheaders',
     
     'user.apps.UserConfig',
+    'location.apps.LocationConfig',
+    'product.apps.ProductConfig',
 ]
 
 MIDDLEWARE = [
@@ -182,7 +184,7 @@ REST_FRAMEWORK = {
     ],
     
     'DEFAULT_THROTTLE_RATES': {
-        'burst': '120/min',
+        'burst': '600/min',
         'sustained': '2000/day',
     },
     
