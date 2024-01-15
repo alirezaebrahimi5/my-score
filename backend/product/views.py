@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import generics, permissions, status
 
-# Create your views here.
+
+class getProductAPIVie(generics.GenericAPIView):
+    pass 
+
+
+class sendProductInfoAPIView(generics.GenericAPIView):
+    pass 

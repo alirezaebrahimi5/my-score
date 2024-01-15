@@ -18,6 +18,9 @@ import locale
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# TODO : Media directory
+
+MEDIA_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -53,6 +56,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'location.apps.LocationConfig',
     'product.apps.ProductConfig',
+    'duty.apps.DutyConfig',
 ]
 
 MIDDLEWARE = [
@@ -158,7 +162,8 @@ DATABASES = {
         'NAME': 'my_score_db',
         'USER': 'postgres',
         'HOST': 'localhost',
-        'PASSWORD': 'my passwords always are best, dont doubt ;)',
+        # TODO : change the password before test it!
+        'PASSWORD': '12345',
         'PORT': '2345',
     },
     # TODO: use Mongodb to store data, that comes from GEOLocation via API call
@@ -167,10 +172,13 @@ DATABASES = {
         'NAME': 'location_db',
         'USER': 'dj_mongo',
         'HOST': 'localhost',
-        'PASSWORD': 'my passwords always are best, dont doubt ;)',
+        # TODO : change the password before test it!
+        'PASSWORD': '12345',
         'PORT': '27017',
     },
 }
+
+
 
 
 REST_FRAMEWORK = {
@@ -250,15 +258,6 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
-
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'test@gmail.com'
-EMAIL_HOST_PASSWORD = 'some random characters :)'
 
 
 # SECURE_SSL_REDIRECT = True
