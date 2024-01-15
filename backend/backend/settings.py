@@ -57,9 +57,13 @@ INSTALLED_APPS = [
     'location.apps.LocationConfig',
     'product.apps.ProductConfig',
 <<<<<<< HEAD
+<<<<<<< HEAD
     'duty.apps.DutyConfig',
 =======
 >>>>>>> a6be8e1 (some bugs fixed)
+=======
+    'duty.apps.DutyConfig',
+>>>>>>> b7b9b89 (some features added)
 ]
 
 MIDDLEWARE = [

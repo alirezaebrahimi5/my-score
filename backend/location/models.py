@@ -27,4 +27,11 @@ class UserLocation(models.Model):
     
     class Meta:
         ordering = ['user']
+<<<<<<< HEAD
 >>>>>>> f64a207 (adding some of location functionality)
+=======
+
+
+class UserPoint(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+>>>>>>> b7b9b89 (some features added)
