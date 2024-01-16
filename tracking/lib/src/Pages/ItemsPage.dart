@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:provider/provider.dart';
 import 'package:tracking/src/Model/DBHelper.dart';
 import 'package:tracking/src/Model/cart_model.dart';
 import 'package:tracking/src/Model/item_model.dart';
 import 'package:tracking/src/Provider/CartProvider.dart';
+=======
+>>>>>>> d74cf61 (initial app contains screens and pages and navbar and side menu)
 
 
 class ItemsPage extends StatelessWidget { 
   const ItemsPage({Key? key}) : super(key: key); 
+<<<<<<< HEAD
 
   @override 
   Widget build(BuildContext context) {
@@ -130,5 +134,23 @@ class ItemsPage extends StatelessWidget {
         );
       }
     );
+=======
+  
+  @override 
+  Widget build(BuildContext context) { 
+    return Container( 
+      color: const Color(0xffC4DFCB), 
+      child: Center( 
+        child: Text( 
+          "Page Number 5", 
+          style: TextStyle( 
+            color: Colors.green[900], 
+            fontSize: 45, 
+            fontWeight: FontWeight.w500, 
+          ), 
+        ), 
+      ), 
+    ); 
+>>>>>>> d74cf61 (initial app contains screens and pages and navbar and side menu)
   } 
 } 

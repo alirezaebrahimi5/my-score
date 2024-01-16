@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:provider/provider.dart';
 import 'package:tracking/src/Model/DBHelper.dart';
 import 'package:tracking/src/Model/cart_model.dart';
@@ -257,10 +258,33 @@ class CartScreen extends StatefulWidget { const CartScreen({
               fontWeight: FontWeight.bold,
             ),
           ),
+=======
+
+
+class CartScreen extends StatelessWidget { 
+  const CartScreen({Key? key}) : super(key: key); 
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('سبد خرید'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          // Within the SecondScreen widget
+          onPressed: () {
+            // Navigate back to the first screen by popping the current route
+            // off the stack.
+            Navigator.pop(context);
+          },
+          child: const Text('Go back!'),
+>>>>>>> d74cf61 (initial app contains screens and pages and navbar and side menu)
         ),
       ),
     );
   }
+<<<<<<< HEAD
   }
 
   class PlusMinusButtons extends StatelessWidget {
@@ -310,3 +334,6 @@ class CartScreen extends StatefulWidget { const CartScreen({
     );
   }
 }
+=======
+} 
+>>>>>>> d74cf61 (initial app contains screens and pages and navbar and side menu)
