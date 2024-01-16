@@ -2,8 +2,8 @@
 =======
 from rest_framework import response, generics, status, permissions
 
-from .models import UserLocation
-from .serializers import LocationSerializer
+from .models import UserLocation, NewLocation
+from .serializers import LocationSerializer, NewLocationSerializer
 
 from user.permissions import *
 
@@ -48,4 +48,21 @@ class AnyUserLocationAPIView(generics.GenericAPIView):
 
     def put(self, request, pk, *args, **kwargs):
         pass
+<<<<<<< HEAD
 >>>>>>> f64a207 (adding some of location functionality)
+=======
+
+
+class AddNewLocationAPIView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class =NewLocationSerializer
+    
+    def get(self, request, *args, **kwargs):
+        return response.Response()
+    
+    def post(self, request, pk, *args, **kwargs):
+        return response.Response()
+    
+    def put(self, request, pk, *args, **kwargs):
+        pass
+>>>>>>> 50a5c07 ( adding new features into location app and add media path for images)
