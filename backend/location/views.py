@@ -1,7 +1,7 @@
 from rest_framework import response, generics, status, permissions
 
-from .models import UserLocation
-from .serializers import LocationSerializer
+from .models import UserLocation, NewLocation
+from .serializers import LocationSerializer, NewLocationSerializer
 
 from user.permissions import *
 
@@ -44,5 +44,19 @@ class AnyUserLocationAPIView(generics.GenericAPIView):
     def post(self, request, pk, *args, **kwargs):
         return response.Response()
 
+    def put(self, request, pk, *args, **kwargs):
+        pass
+
+
+class AddNewLocationAPIView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class =NewLocationSerializer
+    
+    def get(self, request, *args, **kwargs):
+        return response.Response()
+    
+    def post(self, request, pk, *args, **kwargs):
+        return response.Response()
+    
     def put(self, request, pk, *args, **kwargs):
         pass

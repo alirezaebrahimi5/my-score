@@ -27,5 +27,13 @@ class UserLocation(models.Model):
         ordering = ['user']
 
 
-class UserPoint(models.Model):
+class NewLocation(models.Model):
+    numbers = RegexValidator(r'^[0-9a]*$', message='تنها اعداد پذیرفته میشوند')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=144)
+    lat = models.CharField(validators=[numbers], max_length=20)
+    log = models.CharField(validators=[numbers], max_length=20)
+    address = models.CharField(max_length=4096)
+    
+    def __str__(self) -> str:
+        return f"{self.user} {self.title}"
