@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 User = settings.AUTH_USER_MODEL
@@ -18,7 +19,11 @@ class UserTime(models.Model):
 
 
 class ScoreComputation(models.Model):
-    pass
+    base_score = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(1)])
+    score_increment = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    
+    def __str__(self) -> str:
+        return f"{self.base_score} {self.score_increment}"
 
 
 class UserGivenScore(models.Model):
@@ -28,3 +33,6 @@ class UserGivenScore(models.Model):
     
     def __str__(self) -> str:
         return f"{self.user} {self.today_time} {self.user_score}"
+    
+    class Meta:
+        ordering = ['user_score']
