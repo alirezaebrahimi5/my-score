@@ -163,9 +163,31 @@ class CartScreen extends StatefulWidget { const CartScreen({
                                         deleteQuantity: () {
                                           cart.deleteQuantity(
                                               provider.cart[index].id!);
-                                          cart.removeTotalPrice(double.parse(
-                                              provider.cart[index].productPrice
-                                                  .toString()));
+                                          dbHelper!
+                                              .updateQuantity(Cart(
+                                                  id: index,
+                                                  productId: index.toString(),
+                                                  productName: provider
+                                                      .cart[index].productName,
+                                                  initialPrice: provider
+                                                      .cart[index].initialPrice,
+                                                  productPrice: provider
+                                                      .cart[index].productPrice,
+                                                  quantity: ValueNotifier(
+                                                      provider.cart[index]
+                                                          .quantity!.value),
+                                                  unitTag: provider
+                                                      .cart[index].unitTag,
+                                                  image: provider
+                                                      .cart[index].image))
+                                              .then((value) {
+                                            setState(() {
+                                              cart.removeTotalPrice(double.parse(
+                                                  provider
+                                                      .cart[index].productPrice
+                                                      .toString()));
+                                            });
+                                          });
                                         },
                                         text: val.toString(),
                                       );
@@ -277,11 +299,11 @@ class CartScreen extends StatefulWidget { const CartScreen({
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           Text(
             value.toString(),
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
         ],
       ),
