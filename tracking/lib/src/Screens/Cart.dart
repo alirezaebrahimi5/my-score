@@ -193,6 +193,7 @@ class CartScreen extends StatefulWidget { const CartScreen({
                                                       .toString()));
                                             });
                                           });
+<<<<<<< HEAD
                                         },
                                         text: val.toString(),
                                       );
@@ -439,6 +440,8 @@ class CartScreen extends StatefulWidget { const CartScreen({
                                           cart.removeTotalPrice(double.parse(
                                               provider.cart[index].productPrice
                                                   .toString()));
+=======
+>>>>>>> d7e812f (fix cart counter bug)
                                         },
                                         text: val.toString(),
                                       );
@@ -556,6 +559,7 @@ class CartScreen extends StatefulWidget { const CartScreen({
           Text(
             title,
 <<<<<<< HEAD
+<<<<<<< HEAD
             style: Theme.of(context).textTheme.titleMedium,
           ),
           Text(
@@ -568,6 +572,13 @@ class CartScreen extends StatefulWidget { const CartScreen({
             value.toString(),
             style: Theme.of(context).textTheme.subtitle2,
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          Text(
+            value.toString(),
+            style: Theme.of(context).textTheme.titleSmall,
+>>>>>>> d7e812f (fix cart counter bug)
           ),
         ],
       ),
