@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     
     'django_filters',
     
+    'django_celery_results',
+    
     # 'sslserver',
     
     'corsheaders',
@@ -59,11 +61,15 @@ INSTALLED_APPS = [
 <<<<<<< HEAD
 <<<<<<< HEAD
     'duty.apps.DutyConfig',
+<<<<<<< HEAD
 =======
 >>>>>>> a6be8e1 (some bugs fixed)
 =======
     'duty.apps.DutyConfig',
 >>>>>>> b7b9b89 (some features added)
+=======
+    'privilege.apps.PrivilegeConfig',
+>>>>>>> ce27f05 (add user score model and serializer)
 ]
 
 MIDDLEWARE = [
@@ -165,6 +171,11 @@ LOGIN_REDIRECT_URL = 'user/profile/'
 
 
 AUTH_USER_MODEL = "user.User"
+
+
+# Celery settings
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 
 DATABASES = {
