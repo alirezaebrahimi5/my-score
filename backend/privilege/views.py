@@ -10,10 +10,10 @@ class UserDailyWorkAPIView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
     
     def post(self, request, *args, **kwargs):
-        pass 
+        return response.Response() 
     
     def post(self, request, *args, **kwargs):
-        pass 
+        return response.Response()
 
 
 class UserScoreAPIView(generics.GenericAPIView):
