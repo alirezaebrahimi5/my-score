@@ -1,7 +1,11 @@
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
+import 'package:tracking/src/Provider/CartProvider.dart';
 import './src/Screens/Profile.dart';
 import './src/Screens/Sample.dart';
 import './src/Screens/History.dart';
@@ -17,15 +21,18 @@ import './src/Pages/EnterPage.dart';
 // function to trigger app build
 void main() => runApp(const MyApp());
 
-
 class MyApp extends StatelessWidget {
 final appTitle = 'Flutter Drawer Demo';
 
   const MyApp({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+        create: (_) => CartProvider(),
+        child: MaterialApp(
       
       localizationsDelegates: const [
         GlobalCupertinoLocalizations.delegate,
@@ -51,7 +58,7 @@ final appTitle = 'Flutter Drawer Demo';
         '/cart': (context) => const CartScreen(),
       },
       debugShowCheckedModeBanner: false,
-    ); // MaterialApp
+    ));
   }
 }
 
@@ -80,16 +87,34 @@ class Controller extends State {
       appBar: AppBar(
         title: const Text("My sort", style: TextStyle(color: Colors.white),),
         actions: <Widget>[
+          badges.Badge(
+            badgeContent: Consumer<CartProvider>(
+              builder: (context, value, child) {
+                return Text(
+                  value.getCounter().toString(),
+                  style: const TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                );
+              },
+            ),
+            position: badges.BadgePosition.topStart(),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CartScreen()));
+              },
+              icon: const Icon(Icons.shopping_bag_outlined),
+            ),
+          ),
+          const SizedBox(
+            width: 20.0,
+          ),
           IconButton(
             icon: const Icon(Icons.notifications),
             onPressed: () {
               Navigator.pushNamed(context, '/notifications');
-            },
-          ), //IconButton
-          IconButton(
-            icon: const Icon(Icons.shopping_bag_outlined),
-            onPressed: () {
-              Navigator.pushNamed(context, '/cart');
             },
           ), //IconButton
         ], //<Widget>[]
