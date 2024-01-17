@@ -39,7 +39,7 @@ class ItemsPage extends StatelessWidget {
       itemCount: products.length,
       itemBuilder: (context, index) {
         return Card(
-          color: Colors.blueGrey.shade200,
+          color: Colors.white,
           elevation: 5.0,
           child: Padding(
             padding: const EdgeInsets.all(4.0),
@@ -64,7 +64,7 @@ class ItemsPage extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         text: TextSpan(
-                            text: 'Name: ',
+                            text: 'عنوان: ',
                             style: TextStyle(
                                 color: Colors.blueGrey.shade800,
                                 fontSize: 16.0),
@@ -79,7 +79,7 @@ class ItemsPage extends StatelessWidget {
                       RichText(
                         maxLines: 1,
                         text: TextSpan(
-                            text: 'Unit: ',
+                            text: 'واحد: ',
                             style: TextStyle(
                                 color: Colors.blueGrey.shade800,
                                 fontSize: 16.0),
@@ -94,14 +94,14 @@ class ItemsPage extends StatelessWidget {
                       RichText(
                         maxLines: 1,
                         text: TextSpan(
-                            text: 'Price: ' r"$",
+                            text: 'قیمت: ',
                             style: TextStyle(
                                 color: Colors.blueGrey.shade800,
                                 fontSize: 16.0),
                             children: [
                               TextSpan(
                                   text:
-                                      '${products[index].price.toString()}\n',
+                                      '${products[index].price.toString()} تومان\n',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold)),
                             ]),
@@ -111,11 +111,19 @@ class ItemsPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueGrey.shade900),
+                        backgroundColor: Colors.redAccent),
                     onPressed: () {
                       saveData(index);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        backgroundColor: Colors.blueAccent,
+                        content: Text('اضافه شد'),
+                        duration: Duration(seconds: 2),
+                      ));
                     },
-                    child: const Text('Add to Cart')),
+                    child: const Text('افزودن به سبد',
+                      style: TextStyle(color: Colors.white),
+                    )),
               ],
             ),
           ),

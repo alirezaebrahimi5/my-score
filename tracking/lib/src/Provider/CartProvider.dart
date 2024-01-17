@@ -25,6 +25,12 @@ class CartProvider with ChangeNotifier {
     return cart;
   }
 
+  void _getPrefsItemsCart() async {
+      cart = await dbHelper.getCartList();
+      _counter = cart.length;
+      notifyListeners();
+  }
+
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('cart_items', _counter);
@@ -53,7 +59,7 @@ class CartProvider with ChangeNotifier {
   }
 
   int getCounter() {
-    _getPrefsItems();
+    _getPrefsItemsCart();
     return _counter;
   }
 

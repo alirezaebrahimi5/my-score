@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
@@ -28,17 +29,21 @@ class DBHelper {
     await db.execute(
         'CREATE TABLE cart(id INTEGER PRIMARY KEY, productId VARCHAR UNIQUE, productName TEXT, initialPrice INTEGER, productPrice INTEGER, quantity INTEGER, unitTag TEXT, image TEXT)');
   }
+
   // inserting data into the table
-  Future<Cart> insert(Cart cart) async {
+  Future<Object> insert(Cart cart) async {
     var dbClient = await database;
     try {
       await dbClient?.insert('cart', cart.toMap()) ?? [];
       return cart;
     } catch (e) {
-      print(e);
-      return cart;
+        var queryResult = await dbClient?.query('cart') ?? [];
+        var available_cart  = queryResult.map((result) => Cart.fromMap(result)).toList();
+        var index = available_cart.indexWhere((element) => element.id == cart.id);
+        available_cart[index].quantity!.value = available_cart[index].quantity!.value + 1;
+        return await dbClient!.update('cart', available_cart[index].quantityMap(),
+          where: "productId = ?", whereArgs: [available_cart[index].productId]);
     }
-
   }
   // getting all the items in the list from the database
   Future<List<Cart>> getCartList() async {
