@@ -26,14 +26,20 @@ class CartProvider with ChangeNotifier {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 30ad978 (add counter and change style)
   void _getPrefsItemsCart() async {
       cart = await dbHelper.getCartList();
       _counter = cart.length;
       notifyListeners();
   }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+>>>>>>> 30ad978 (add counter and change style)
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('cart_items', _counter);
@@ -63,10 +69,14 @@ class CartProvider with ChangeNotifier {
 
   int getCounter() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     _getPrefsItemsCart();
 =======
     _getPrefsItems();
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+    _getPrefsItemsCart();
+>>>>>>> 30ad978 (add counter and change style)
     return _counter;
   }
 

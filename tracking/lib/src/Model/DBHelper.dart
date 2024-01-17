@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:shared_preferences/shared_preferences.dart';
 =======
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+import 'package:shared_preferences/shared_preferences.dart';
+>>>>>>> 30ad978 (add counter and change style)
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
@@ -33,6 +37,7 @@ class DBHelper {
         'CREATE TABLE cart(id INTEGER PRIMARY KEY, productId VARCHAR UNIQUE, productName TEXT, initialPrice INTEGER, productPrice INTEGER, quantity INTEGER, unitTag TEXT, image TEXT)');
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   // inserting data into the table
   Future<Object> insert(Cart cart) async {
@@ -40,18 +45,27 @@ class DBHelper {
   // inserting data into the table
   Future<Cart> insert(Cart cart) async {
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+
+  // inserting data into the table
+  Future<Object> insert(Cart cart) async {
+>>>>>>> 30ad978 (add counter and change style)
     var dbClient = await database;
     try {
       await dbClient?.insert('cart', cart.toMap()) ?? [];
       return cart;
     } catch (e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 30ad978 (add counter and change style)
         var queryResult = await dbClient?.query('cart') ?? [];
         var available_cart  = queryResult.map((result) => Cart.fromMap(result)).toList();
         var index = available_cart.indexWhere((element) => element.id == cart.id);
         available_cart[index].quantity!.value = available_cart[index].quantity!.value + 1;
         return await dbClient!.update('cart', available_cart[index].quantityMap(),
           where: "productId = ?", whereArgs: [available_cart[index].productId]);
+<<<<<<< HEAD
     }
 =======
       print(e);
@@ -59,6 +73,9 @@ class DBHelper {
     }
 
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+    }
+>>>>>>> 30ad978 (add counter and change style)
   }
   // getting all the items in the list from the database
   Future<List<Cart>> getCartList() async {

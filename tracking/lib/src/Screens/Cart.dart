@@ -288,7 +288,7 @@ class CartScreen extends StatefulWidget { const CartScreen({
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('My Shopping Cart'),
+        title: const Text('سبد خرید'),
         actions: [
           const SizedBox(
             width: 20.0,
@@ -315,7 +315,7 @@ class CartScreen extends StatefulWidget { const CartScreen({
                 if (provider.cart.isEmpty) {
                   return const Center(
                       child: Text(
-                    'Your Cart is Empty',
+                    'سبد خالی است',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                   ));
@@ -325,7 +325,7 @@ class CartScreen extends StatefulWidget { const CartScreen({
                       itemCount: provider.cart.length,
                       itemBuilder: (context, index) {
                         return Card(
-                          color: Colors.blueGrey.shade200,
+                          color: Colors.white,
                           elevation: 5.0,
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
@@ -352,7 +352,7 @@ class CartScreen extends StatefulWidget { const CartScreen({
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 1,
                                         text: TextSpan(
-                                            text: 'Name: ',
+                                            text: 'عنوان: ',
                                             style: TextStyle(
                                                 color: Colors.blueGrey.shade800,
                                                 fontSize: 16.0),
@@ -367,7 +367,7 @@ class CartScreen extends StatefulWidget { const CartScreen({
                                       RichText(
                                         maxLines: 1,
                                         text: TextSpan(
-                                            text: 'Unit: ',
+                                            text: 'واحد: ',
                                             style: TextStyle(
                                                 color: Colors.blueGrey.shade800,
                                                 fontSize: 16.0),
@@ -383,14 +383,14 @@ class CartScreen extends StatefulWidget { const CartScreen({
                                       RichText(
                                         maxLines: 1,
                                         text: TextSpan(
-                                            text: 'Price: ' r"$",
+                                            text: 'قیمت: ',
                                             style: TextStyle(
                                                 color: Colors.blueGrey.shade800,
                                                 fontSize: 16.0),
                                             children: [
                                               TextSpan(
                                                   text:
-                                                      '${provider.cart[index].productPrice!}\n',
+                                                      '${provider.cart[index].productPrice!} تومان \n',
                                                   style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold)),
@@ -478,8 +478,8 @@ class CartScreen extends StatefulWidget { const CartScreen({
                       valueListenable: totalPrice,
                       builder: (context, val, child) {
                         return ReusableWidget(
-                            title: 'Sub-Total',
-                            value: r'$' + (val?.toStringAsFixed(2) ?? '0'));
+                            title: 'قیمت کل',
+                            value:  (val?.toStringAsFixed(2) ?? '0') + r' تومان');
                       }),
                 ],
               );
@@ -491,7 +491,8 @@ class CartScreen extends StatefulWidget { const CartScreen({
         onTap: () {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Payment Successful'),
+              backgroundColor: Colors.green,
+              content: Text('انجام شد'),
               duration: Duration(seconds: 2),
             ),
           );
@@ -501,7 +502,7 @@ class CartScreen extends StatefulWidget { const CartScreen({
           alignment: Alignment.center,
           height: 50.0,
           child: const Text(
-            'Proceed to Pay',
+            'ثبت فاکتور',
             style: TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.bold,
