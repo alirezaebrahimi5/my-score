@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import 'package:shared_preferences/shared_preferences.dart';
+=======
+>>>>>>> 318cc33 (add items page and cart handling)
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
@@ -29,14 +32,20 @@ class DBHelper {
     await db.execute(
         'CREATE TABLE cart(id INTEGER PRIMARY KEY, productId VARCHAR UNIQUE, productName TEXT, initialPrice INTEGER, productPrice INTEGER, quantity INTEGER, unitTag TEXT, image TEXT)');
   }
+<<<<<<< HEAD
 
   // inserting data into the table
   Future<Object> insert(Cart cart) async {
+=======
+  // inserting data into the table
+  Future<Cart> insert(Cart cart) async {
+>>>>>>> 318cc33 (add items page and cart handling)
     var dbClient = await database;
     try {
       await dbClient?.insert('cart', cart.toMap()) ?? [];
       return cart;
     } catch (e) {
+<<<<<<< HEAD
         var queryResult = await dbClient?.query('cart') ?? [];
         var available_cart  = queryResult.map((result) => Cart.fromMap(result)).toList();
         var index = available_cart.indexWhere((element) => element.id == cart.id);
@@ -44,6 +53,12 @@ class DBHelper {
         return await dbClient!.update('cart', available_cart[index].quantityMap(),
           where: "productId = ?", whereArgs: [available_cart[index].productId]);
     }
+=======
+      print(e);
+      return cart;
+    }
+
+>>>>>>> 318cc33 (add items page and cart handling)
   }
   // getting all the items in the list from the database
   Future<List<Cart>> getCartList() async {
@@ -63,6 +78,7 @@ class DBHelper {
     var dbClient = await database;
     return await dbClient!.delete('cart', where: 'id = ?', whereArgs: [id]);
   }
+<<<<<<< HEAD
 
   Future<int> addItemQuantity(int index) async {
     var dbClient = await database;
@@ -80,4 +96,6 @@ class DBHelper {
     return await dbClient!.update('cart', available_cart[index].quantityMap(),
           where: "productId = ?", whereArgs: [available_cart[index].productId]);
   }
+=======
+>>>>>>> 318cc33 (add items page and cart handling)
 }

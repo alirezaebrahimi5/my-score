@@ -11,9 +11,13 @@ environment:
 
 dependencies:
 <<<<<<< HEAD
+<<<<<<< HEAD
   badges: ^3.1.2
 =======
 >>>>>>> d74cf61 (initial app contains screens and pages and navbar and side menu)
+=======
+  badges: ^3.1.2
+>>>>>>> 318cc33 (add items page and cart handling)
   convex_bottom_bar: ^3.2.0
   cupertino_icons: ^1.0.6
   flutter:
@@ -22,6 +26,9 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.0.9
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 318cc33 (add items page and cart handling)
   path: ^1.8.3
   path_provider: ^2.1.2
   provider: ^6.1.1
@@ -29,8 +36,11 @@ dependencies:
   sqflite: ^2.3.0
   sqflite_common_ffi: ^2.3.1
   sqlite3_flutter_libs: ^0.5.19+1
+<<<<<<< HEAD
 =======
 >>>>>>> d74cf61 (initial app contains screens and pages and navbar and side menu)
+=======
+>>>>>>> 318cc33 (add items page and cart handling)
     
 dev_dependencies:
   flutter_test:
