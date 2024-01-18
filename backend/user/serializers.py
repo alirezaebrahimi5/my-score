@@ -57,3 +57,6 @@ class UserIDSerializer(serializers.Serializer):
 class PasswordSerializer(serializers.Serializer):
     password = serializers.CharField()
     confirm_password = serializers.CharField()
+    
+    def create(self, validated_data):
+        return User.objects.update(**validated_data)
