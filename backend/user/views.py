@@ -2,7 +2,7 @@ from rest_framework import permissions, response, status, generics
 from rest_framework_simplejwt import tokens
 
 from .models import User 
-from .serializers import UserRegisterationSerializer, UserProfileSerializer
+from .serializers import *
 
 
 ####################### Authentication section #######################
@@ -12,6 +12,19 @@ class UserLoginAPIView(generics.GenericAPIView):
     """
     An endpoint to login users.
     """
+    
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = LoginUserSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data
+        serializer = CustomUserSerializer(user)
+        token = tokens.RefreshToken.for_user(user)
+        data = serializer.data
+        data["tokens"] = {"refresh": str(token), "access": str(token.access_token)}
+        return response.Response(data, status=status.HTTP_200_OK)
 
 
 class UserLogoutAPIView(generics.GenericAPIView):
