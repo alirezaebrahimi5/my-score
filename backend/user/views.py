@@ -3,6 +3,7 @@ from rest_framework_simplejwt import tokens
 
 from .models import User 
 from .serializers import *
+from .utils import *
 
 
 ####################### Authentication section #######################
@@ -101,20 +102,40 @@ class GetUserMobileAPIView(generics.GenericAPIView):
     An endpoint for users to send their mobile accounts
     """
     
+    serializer_class = [UserIDSerializer]
+    permission_classes = []
+    
     def post(self, request, *args, **kwargs):
-        pass
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.data 
+        create_OTP_token(user=user)
+        return response.Response(user, status=status.HTTP_200_OK)
     
     def get(self, request, *args, **kwargs):
         pass
 
 
-class SendOTPAPIView(generics.GenericAPIView):
+class CheckOTPAPIView(generics.GenericAPIView):
     """
     An endpoint for users to the OTP tokens
     """
+    
+    def post(self, request, *args, **kwargs):
+        pass
 
 
 class ResetPasswordAPIView(generics.GenericAPIView):
     """
     An endpoint for users to reset their passwords
     """
+    
+    serializer_class = [PasswordSerializer]
+    
+    
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer_class(data=request.data)
+        if serializer.password == serializer.confirm_password:
+            return response.Response("done!", status=status.HTTP_205_RESET_CONTENT)
+        else:
+            return response.Response("error!", status=status.HTTP_406_NOT_ACCEPTABLE)

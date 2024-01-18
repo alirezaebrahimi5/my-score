@@ -1,11 +1,6 @@
 import pyotp 
 
-from .models import User 
 
-
-def create_OTP_token():
-    pass 
-
-
-def check_OTP_Token():
-    pass
+def create_OTP_token(user):
+    token = pyotp.random_base32(chars=user.pk)
+    return user, token
