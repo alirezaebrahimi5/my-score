@@ -70,7 +70,7 @@ class UserRegisterAPIView(generics.CreateAPIView):
         return response.Response(data, status=status.HTTP_201_CREATED)
 
 
-class UsreProfileAPIView(generics.RetrieveAPIView):
+class UserProfileAPIView(generics.RetrieveAPIView):
     """
     An endpoint for users to see their profiles
     """
@@ -103,7 +103,7 @@ class GetUserMobileAPIView(generics.GenericAPIView):
     """
     
     serializer_class = [UserIDSerializer]
-    permission_classes = []
+    # permission_classes = []
     
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -122,7 +122,9 @@ class CheckOTPAPIView(generics.GenericAPIView):
     """
     
     def post(self, request, *args, **kwargs):
-        pass
+        user, token = create_OTP_token(request.data)
+        if request.user == user:
+            pass
 
 
 class ResetPasswordAPIView(generics.GenericAPIView):
@@ -131,11 +133,11 @@ class ResetPasswordAPIView(generics.GenericAPIView):
     """
     
     serializer_class = [PasswordSerializer]
-    
-    
+        
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer_class(data=request.data)
         if serializer.password == serializer.confirm_password:
+            serializer.save()
             return response.Response("done!", status=status.HTTP_205_RESET_CONTENT)
         else:
             return response.Response("error!", status=status.HTTP_406_NOT_ACCEPTABLE)
