@@ -122,9 +122,7 @@ class CheckOTPAPIView(generics.GenericAPIView):
     """
     
     def post(self, request, *args, **kwargs):
-        user, token = create_OTP_token(request.data)
-        if request.user == user:
-            pass
+        pass
 
 
 class ResetPasswordAPIView(generics.GenericAPIView):

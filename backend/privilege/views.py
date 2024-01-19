@@ -12,7 +12,7 @@ class UserDailyWorkAPIView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         return response.Response() 
     
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         return response.Response()
 
 
