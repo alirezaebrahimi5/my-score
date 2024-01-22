@@ -63,4 +63,21 @@ class DBHelper {
     var dbClient = await database;
     return await dbClient!.delete('cart', where: 'id = ?', whereArgs: [id]);
   }
+
+  Future<int> addItemQuantity(int index) async {
+    var dbClient = await database;
+    var queryResult = await dbClient?.query('cart') ?? [];
+    var available_cart  = queryResult.map((result) => Cart.fromMap(result)).toList();
+    available_cart[index].quantity!.value = available_cart[index].quantity!.value + 1;
+    return await dbClient!.update('cart', available_cart[index].quantityMap(),
+          where: "productId = ?", whereArgs: [available_cart[index].productId]);
+  }
+  Future<int> removeItemQuantity(int index) async {
+    var dbClient = await database;
+    var queryResult = await dbClient?.query('cart') ?? [];
+    var available_cart  = queryResult.map((result) => Cart.fromMap(result)).toList();
+    available_cart[index].quantity!.value = available_cart[index].quantity!.value - 1;
+    return await dbClient!.update('cart', available_cart[index].quantityMap(),
+          where: "productId = ?", whereArgs: [available_cart[index].productId]);
+  }
 }
