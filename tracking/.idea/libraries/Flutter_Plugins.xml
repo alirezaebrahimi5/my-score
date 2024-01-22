@@ -1,6 +1,9 @@
 <component name="libraryTable">
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 61c06db (fix update quantity bugs)
     <CLASSES>
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.3.2" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_android-2.2.1" />
@@ -16,9 +19,12 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider-2.1.2" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1" />
     </CLASSES>
+<<<<<<< HEAD
 =======
     <CLASSES />
 >>>>>>> 7e18e90 (initiate app)
+=======
+>>>>>>> 61c06db (fix update quantity bugs)
     <JAVADOC />
     <SOURCES />
   </library>

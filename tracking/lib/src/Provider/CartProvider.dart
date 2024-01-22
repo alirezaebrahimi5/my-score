@@ -82,6 +82,7 @@ class CartProvider with ChangeNotifier {
 
   void addQuantity(int id) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     final index = cart.indexWhere((element) => element.id == id);
     dbHelper.addItemQuantity(index);
@@ -89,6 +90,11 @@ class CartProvider with ChangeNotifier {
     final index = cart.indexWhere((element) => element.id == id);
     cart[index].quantity!.value = cart[index].quantity!.value + 1;
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+
+    final index = cart.indexWhere((element) => element.id == id);
+    dbHelper.addItemQuantity(index);
+>>>>>>> 61c06db (fix update quantity bugs)
     _setPrefsItems();
     notifyListeners();
   }
@@ -100,10 +106,14 @@ class CartProvider with ChangeNotifier {
       currentQuantity == 1;
     } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
       dbHelper.removeItemQuantity(index);
 =======
       cart[index].quantity!.value = currentQuantity - 1;
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+      dbHelper.removeItemQuantity(index);
+>>>>>>> 61c06db (fix update quantity bugs)
     }
     _setPrefsItems();
     notifyListeners();

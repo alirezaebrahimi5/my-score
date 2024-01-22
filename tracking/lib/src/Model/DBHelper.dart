@@ -96,6 +96,9 @@ class DBHelper {
     return await dbClient!.delete('cart', where: 'id = ?', whereArgs: [id]);
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 61c06db (fix update quantity bugs)
 
   Future<int> addItemQuantity(int index) async {
     var dbClient = await database;
@@ -113,6 +116,9 @@ class DBHelper {
     return await dbClient!.update('cart', available_cart[index].quantityMap(),
           where: "productId = ?", whereArgs: [available_cart[index].productId]);
   }
+<<<<<<< HEAD
 =======
 >>>>>>> 318cc33 (add items page and cart handling)
+=======
+>>>>>>> 61c06db (fix update quantity bugs)
 }
