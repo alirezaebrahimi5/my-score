@@ -174,6 +174,12 @@ LOGIN_REDIRECT_URL = 'user/profile/'
 AUTH_USER_MODEL = "user.User"
 
 
+BASE_SCORE = int(1)
+BRONZE_SCORE = int(1)
+SILVER_SCORE = int(5)
+GOLDEN_SCORE = int(10)
+
+
 # Celery settings
 CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
@@ -200,8 +206,6 @@ DATABASES = {
         'PORT': '27017',
     },
 }
-
-
 
 
 REST_FRAMEWORK = {
