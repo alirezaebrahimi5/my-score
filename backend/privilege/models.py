@@ -18,14 +18,6 @@ class UserTime(models.Model):
         ordering = ['-created_at']
 
 
-class ScoreComputation(models.Model):
-    base_score = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(1)])
-    score_increment = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
-    
-    def __str__(self) -> str:
-        return f"{self.base_score} {self.score_increment}"
-
-
 class UserGivenScore(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     today_time =  models.DurationField(null=True, blank=True)
