@@ -3,14 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-<<<<<<< HEAD
-<<<<<<< HEAD
   sqlite3_flutter_libs
-=======
->>>>>>> d74cf61 (initial app contains screens and pages and navbar and side menu)
-=======
-  sqlite3_flutter_libs
->>>>>>> 318cc33 (add items page and cart handling)
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

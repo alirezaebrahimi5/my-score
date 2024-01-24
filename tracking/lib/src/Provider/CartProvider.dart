@@ -25,21 +25,12 @@ class CartProvider with ChangeNotifier {
     return cart;
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 30ad978 (add counter and change style)
   void _getPrefsItemsCart() async {
       cart = await dbHelper.getCartList();
       _counter = cart.length;
       notifyListeners();
   }
 
-<<<<<<< HEAD
-=======
->>>>>>> 318cc33 (add items page and cart handling)
-=======
->>>>>>> 30ad978 (add counter and change style)
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('cart_items', _counter);
@@ -68,33 +59,19 @@ class CartProvider with ChangeNotifier {
   }
 
   int getCounter() {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     _getPrefsItemsCart();
-=======
     _getPrefsItems();
->>>>>>> 318cc33 (add items page and cart handling)
-=======
+
     _getPrefsItemsCart();
->>>>>>> 30ad978 (add counter and change style)
     return _counter;
   }
 
   void addQuantity(int id) {
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     final index = cart.indexWhere((element) => element.id == id);
     dbHelper.addItemQuantity(index);
-=======
-    final index = cart.indexWhere((element) => element.id == id);
     cart[index].quantity!.value = cart[index].quantity!.value + 1;
->>>>>>> 318cc33 (add items page and cart handling)
-=======
-
-    final index = cart.indexWhere((element) => element.id == id);
-    dbHelper.addItemQuantity(index);
->>>>>>> 61c06db (fix update quantity bugs)
     _setPrefsItems();
     notifyListeners();
   }
@@ -105,15 +82,11 @@ class CartProvider with ChangeNotifier {
     if (currentQuantity <= 1) {
       currentQuantity == 1;
     } else {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
       dbHelper.removeItemQuantity(index);
-=======
       cart[index].quantity!.value = currentQuantity - 1;
->>>>>>> 318cc33 (add items page and cart handling)
-=======
+
       dbHelper.removeItemQuantity(index);
->>>>>>> 61c06db (fix update quantity bugs)
     }
     _setPrefsItems();
     notifyListeners();
